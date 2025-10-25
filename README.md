@@ -1,11 +1,12 @@
 # Smart Chair Monitoring
 
-![View1](Media/view1.jpg)
-![View2](Media/view1.jpg)
+![View1](Media/view1.png)
 
 ## Introduction
 
 **Smart Chair** is an intelligent health monitoring solution designed to track a user’s heart rate and respiration rate using fusion sensor technology. The system integrates multiple sensors embedded in the chair to capture physiological signals non-invasively while the user is sitting.
+
+![View2](Media/view2.png)
 
 ## Key Features
 
