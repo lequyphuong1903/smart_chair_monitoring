@@ -1,0 +1,440 @@
+﻿<Window x:Class="PatientMonitoring.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="clr-namespace:OxyPlot.SkiaSharp.Wpf;assembly=OxyPlot.SkiaSharp.Wpf"
+        xmlns:ico="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:PatientMonitoring"
+        mc:Ignorable="d" Background="Black"
+        Title="MainWindow" Height="1080" Width="1980"
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Topmost="True">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="450"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Control Panel -->
+        <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <Grid>
+                <Image Source="/Assets/logo.png" Width="900"></Image>
+            </Grid>
+
+            <TextBlock Text="{Binding CurrentDateTime}"
+                       Margin="30,0,30,0"
+                       FontSize="45" 
+                       FontFamily="pack://application:,,,/Fonts/#LED Digital 7"
+                       Foreground="Cyan"
+                       VerticalAlignment="Center"/>
+
+            <Button Command="{Binding StartCommand}" Margin="0,10,0,10" Height="90" Width="90"
+                    Background="#333333">
+                <ico:PackIconMaterial Kind="Play" Margin="10,10,10,10"
+                                      Width="60" Height="60"
+                                      Foreground="White"/>
+            </Button>
+            <Button Command="{Binding StopCommand}" Margin="10" Background="#333333" Height="90" Width="90">
+                <ico:PackIconMaterial Kind="StopCircle" Margin="10,10,10,10"
+                                        Width="60" Height="60"
+                                        Foreground="White"/>
+            </Button>
+            <Button Command="{Binding ClearCommand}" Margin="10" Background="#333333" Height="90" Width="90">
+                <ico:PackIconBoxIcons Kind="RegularReset" Margin="10,10,10,10"
+                                            Width="60" Height="60"
+                                            Foreground="White"/>
+            </Button>
+            <Button Command="{Binding SettingCommand}" Margin="10" Background="#333333" Height="90" Width="90">
+                <ico:PackIconGameIcons Kind="SettingsKnobs" Margin="10,10,10,10"
+                                      Width="60" Height="60"
+                                      Foreground="White"/>
+            </Button>
+            <Button Command="{Binding QuitCommand}" Margin="10" Background="#333333" Height="90" Width="90">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <ico:PackIconMaterial Kind="ExitToApp" Margin="10,10,10,10"
+                                          Width="60" Height="60"
+                                          Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!-- Plot 1 + Y controls -->
+        <Grid Grid.Row="1" Margin="10">
+            <oxy:PlotView Model="{Binding Plot1}"/>
+            <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,10,10,0">
+                <Button Command="{Binding IncreasePlot1YMaxCommand}"
+                ToolTip="Increase Y Max"
+                Width="40" Height="40" Background="#333333" Margin="0,0,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot1YMaxCommand}"
+                ToolTip="Decrease Y Min"
+                Width="40" Height="40" Background="#333333">
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+
+                <Button Command="{Binding IncreasePlot1YMinCommand}"
+                        ToolTip="Increase Y Max"
+                        Width="40" Height="40" Background="#333333" Margin="0,10,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot1YMinCommand}"
+                        ToolTip="Decrease Y Min"
+                        Width="40" Height="40" Background="#333333">            
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Plot 2 + Y controls -->
+        <Grid Grid.Row="2" Margin="10">
+            <oxy:PlotView Model="{Binding Plot2}"/>
+            <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,10,10,0">
+                <Button Command="{Binding IncreasePlot2YMaxCommand}"
+                ToolTip="Increase Y Max"
+                Width="40" Height="40" Background="#333333" Margin="0,0,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot2YMaxCommand}"
+                ToolTip="Decrease Y Min"
+                Width="40" Height="40" Background="#333333">
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding IncreasePlot2YMinCommand}"
+                        ToolTip="Increase Y Max"
+                        Width="40" Height="40" Background="#333333" Margin="0,10,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot2YMinCommand}"
+                        ToolTip="Decrease Y Min"
+                        Width="40" Height="40" Background="#333333">
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Plot 2 + Y controls -->
+        <Grid Grid.Row="3" Margin="10">
+            <oxy:PlotView Model="{Binding Plot3}"/>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Margin="0,10,10,0">
+                <Button Command="{Binding IncreasePlot3YMaxCommand}"
+                        ToolTip="Increase Y Max"
+                        Width="40" Height="40" Background="#333333" Margin="0,0,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot3YMaxCommand}"
+                        ToolTip="Decrease Y Min"
+                        Width="40" Height="40" Background="#333333">
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding IncreasePlot3YMinCommand}"
+                        ToolTip="Increase Y Max"
+                        Width="40" Height="40" Background="#333333" Margin="0,10,0,6">
+                    <ico:PackIconMaterial Kind="PlusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+                <Button Command="{Binding DecreasePlot3YMinCommand}"
+                        ToolTip="Decrease Y Min"
+                        Width="40" Height="40" Background="#333333">
+                    <ico:PackIconMaterial Kind="MinusBox" Foreground="White" Width="28" Height="28"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Plot 4 side-by-side -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1000"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <oxy:PlotView Model="{Binding Plot4}" Grid.Column="0" Margin="10"/>
+
+            <!-- Time Range + Chart Controls -->
+            <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
+                <TextBlock Text="Time Range" 
+                           FontSize="25" Foreground="White" 
+                           FontWeight="SemiBold" Margin="0,0,0,0"/>
+
+                <!-- Quick adjust slider -->
+                <Slider Margin="20,0,0,0"
+                        Width="390"
+                        Minimum="1" Maximum="24"
+                        TickFrequency="1" IsSnapToTickEnabled="True"
+                        Value="{Binding SelectedTimeRangeHours, Mode=TwoWay}"
+                        Style="{StaticResource DarkSlider}"/>
+                <Separator Margin="0,10,0,10" Background="#444444" Height="1"/>
+                <!-- Series visibility -->
+                <TextBlock Text="Series" FontSize="25" FontWeight="SemiBold" Foreground="White"/>
+                <CheckBox Margin="20,2,0,0"
+                          FontSize="18"
+                          Content="Show Heart Rate"
+                          IsChecked="{Binding ShowHeartRate, Mode=TwoWay}"
+                          Style="{StaticResource DarkCheckBox}" Foreground="White"/>
+                <CheckBox Margin="20,2,0,0"
+                          FontSize="18" Foreground="White"
+                          Content="Show Resiratory Rate"
+                          IsChecked="{Binding ShowBreathRate, Mode=TwoWay}"
+                          Style="{StaticResource DarkCheckBox}"/>
+                <CheckBox Margin="20,2,0,0"
+                          FontSize="18" Foreground="White"
+                          Content="Show SpO2"
+                          IsChecked="{Binding ShowSpO2Value, Mode=TwoWay}"
+                          Style="{StaticResource DarkCheckBox}"/>
+
+            </StackPanel>
+        </Grid>
+
+        <!--Dashboard Monitoring-->
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" 
+                    VerticalAlignment="Center" Margin="0,-100,0,0">
+            <!-- Heart Rate -->
+            <TextBlock Text="Current Heart Rate" Foreground="Green" 
+                       FontSize="30" FontWeight="SemiBold" 
+                       VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Margin="20,-100,0,20"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/hr.png"
+                       Width="72" Height="72"
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Setter Property="Opacity" Value="1"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HrBlinkOn}" Value="False">
+                                    <Setter Property="Opacity" Value="0.2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <TextBlock Text="{Binding HRDisplay}" 
+                   FontSize="120" FontWeight="SemiBold" FontFamily="Roboto Mono"
+                   VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Green"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HrAlertActive}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBlock Text=" bpm" Grid.Column="1"
+                   FontSize="30" FontWeight="SemiBold" Foreground="Green"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                   Margin="20,20,0,20"/>
+            </Grid>
+
+            <TextBlock Text="{Binding HrAlertMessage}" Foreground="Red"
+               FontSize="24" FontWeight="SemiBold" Margin="20,10,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <!-- Respiration Rate -->
+            <TextBlock Text="Current Respiratory rate" Foreground="Orange" 
+                       FontSize="30" FontWeight="SemiBold" 
+                       VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Margin="20, 0,0,20"/>    
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/rr.png"
+                       Width="72" Height="72"
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"> 
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Setter Property="Opacity" Value="1"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HrBlinkOn}" Value="False">
+                                    <Setter Property="Opacity" Value="0.2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <TextBlock Text="{Binding RRDisplay}" 
+                   FontSize="120" FontWeight="SemiBold" FontFamily="Roboto Mono"
+                   VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Orange"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RrAlertActive}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBlock Text=" bpm" Grid.Column="1"
+                           FontSize="30" FontWeight="SemiBold" Foreground="Orange"
+                           VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                           Margin="20,20,0,20"/>
+            </Grid>
+
+            <TextBlock Text="{Binding RrAlertMessage}" Foreground="Red"
+               FontSize="24" FontWeight="SemiBold" Margin="20,10,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <!-- SpO2 -->
+            <TextBlock Text="Current SpO2" Foreground="DeepSkyBlue" 
+                       FontSize="30" FontWeight="SemiBold" 
+                       VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Margin="20,0,0,20"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/spo2.png"
+                       Width="72" Height="72"
+                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Setter Property="Opacity" Value="1"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HrBlinkOn}" Value="False">
+                                    <Setter Property="Opacity" Value="0.2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <TextBlock Text="{Binding Spo2Display}" 
+                           FontSize="120" FontWeight="SemiBold" FontFamily="Roboto Mono"
+                           VerticalAlignment="Center" HorizontalAlignment="Right">  
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="DeepSkyBlue"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Spo2AlertActive}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <TextBlock Text=" %" Grid.Column="1"
+                           FontSize="30" FontWeight="SemiBold" Foreground="DeepSkyBlue"
+                           VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                           Margin="20,20,0,20"/>
+            </Grid>
+
+            <TextBlock Text="{Binding Spo2AlertMessage}" Foreground="Red"
+                            FontSize="24" FontWeight="SemiBold" Margin="20,10,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+
+            <!-- Status -->
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <TextBlock Text="Status: " FontSize="30" FontWeight="SemiBold" Foreground="White"/>
+                <TextBlock FontSize="30" FontWeight="SemiBold">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="OrangeRed"/>
+                            <Setter Property="Text" Value="Stopped"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                                    <Setter Property="Foreground" Value="Lime"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsPaused}" Value="True">
+                                    <Setter Property="Foreground" Value="Gold"/>
+                                    <Setter Property="Text" Value="Paused"/>
+                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsRunning}" Value="True"/>
+                                        <Condition Binding="{Binding IsPaused}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Text" Value="Running"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        
+        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2"
+              IsHitTestVisible="False"
+              Visibility="{Binding ShowNoPersonOverlay, Converter={StaticResource BoolToVisibility}}">
+                    <Border Background="Gray" CornerRadius="12"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Padding="24">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Assets/warning.png"
+                   Width="180" Height="180" Stretch="Uniform" Margin="0,0,0,12"/>
+                    <TextBlock Text="No person detected"
+                       Foreground="White" FontSize="36" FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36401.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientMonitoring", "PatientMonitoring\PatientMonitoring.csproj", "{96B74024-0833-4C09-8CE8-BE7487F573FA}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "blebackend", "blebackend\blebackend.pyproj", "{66F62A88-9244-4E90-A067-0AAB8FD7D19B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|x64.Build.0 = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Debug|x86.Build.0 = Debug|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|x64.ActiveCfg = Release|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|x64.Build.0 = Release|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|x86.ActiveCfg = Release|Any CPU
+		{96B74024-0833-4C09-8CE8-BE7487F573FA}.Release|x86.Build.0 = Release|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Release|x64.ActiveCfg = Release|Any CPU
+		{66F62A88-9244-4E90-A067-0AAB8FD7D19B}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADD31D59-844D-45EB-B296-50343B707554}
+	EndGlobalSection
+EndGlobal

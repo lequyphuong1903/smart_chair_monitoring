@@ -1,0 +1,58 @@
+﻿<Window x:Class="PatientMonitoring.Views.SettingPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ico="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Height="250"
+        Width="400"
+        Background="#0A1E3F"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" VerticalAlignment="Center"
+                   Text="Host" Foreground="Orange"
+                   FontSize="20" FontWeight="Medium" Grid.ColumnSpan="2" Margin="8,0,332,0"/>
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 FontSize="20" FontWeight="Medium"
+                 Text="{Binding Host, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"
+                   Text="Port" Foreground="Orange"
+                   FontSize="20" FontWeight="Medium" Grid.ColumnSpan="2" Margin="8,0,332,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 FontSize="20" FontWeight="Medium"
+                 Text="{Binding Port, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"
+                   Text="SPW" Foreground="Orange"
+                   FontSize="20" FontWeight="Medium" Grid.ColumnSpan="2" Margin="8,0,332,0"/>
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 FontSize="20" FontWeight="Medium"
+                 Text="{Binding MaxPoints, UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+
+        <Button Grid.Row="3" Grid.Column="1"
+                Command="{Binding SaveCommand}" Margin="55,12,200,12">
+            <ico:PackIconMaterial Kind="ContentSave"
+                                    Width="80"/>
+        </Button>
+        <Button Grid.Row="3" Grid.Column="1"
+            Command="{Binding CancelCommand}" Margin="196,12,59,13">
+            <ico:PackIconMaterial Kind="Cancel"
+                Width="80"/>
+        </Button>
+    </Grid>
+</Window>
